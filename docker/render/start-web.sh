@@ -2,6 +2,17 @@
 
 set -eu
 
+mkdir -p \
+    bootstrap/cache \
+    storage/app/private/livewire-tmp \
+    storage/app/public \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs
+
+chown -R www-data:www-data bootstrap/cache storage
+
 php artisan package:discover --ansi
 php artisan migrate --force
 
